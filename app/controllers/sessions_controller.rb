@@ -1,7 +1,16 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
-  # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
+
+  skip_before_filter :login_required
+
+  def index
+    if !session[:user_id]
+      redirect_to :login
+    else
+      redirect_to :controller => 'posts'
+    end
+  end
+
 
   # render new.rhtml
   def new
