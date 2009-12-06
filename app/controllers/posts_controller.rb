@@ -2,7 +2,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.all
+
+
+    redirect_to :action => 'show', :id => session[:user_id] 
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,6 +12,7 @@ class PostsController < ApplicationController
     end
   end
 
+  # Returns the posts for a user
   # GET /posts/1
   # GET /posts/1.xml
   def show
