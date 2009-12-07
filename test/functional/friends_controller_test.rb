@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class FriendsControllerTest < ActionController::TestCase
+
+  def setup
+    login! 1
+  end
+
   test "should get index" do
     get :index
     assert_response :success
