@@ -2,16 +2,21 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    user_id = params[:id] ? params[:id] : session[:user_id]
-    @posts = Post.find_all_by_user_id(user_id)
+    @posts = Post.find_all_by_user_id(session[:user_id])
     respond_to do |format|
       format.html # index.html.erb
+      format.json { render @posts.to_json }
     end
   end
 
   def show
+    @post = Post.new
+    @posts = Post.find_all_by_user_id(params[:id])
+
     respond_to do |format|
-      format.html { render :action => "index" }
+
+      format.html { render :template => "posts/index.html.erb" }
+      format.json { render :json => @posts.to_json }
     end
   end
 
