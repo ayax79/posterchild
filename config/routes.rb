@@ -12,8 +12,6 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
-  map.posts '/posts', :controller => 'posts', :action => 'index'
-  map.posts '/posts/:id', :controller => 'posts', :action => 'index'
 
 
 
