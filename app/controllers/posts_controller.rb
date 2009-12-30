@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
 
+  skip_before_filter :login_required
+  before_filter :login_required, :except => "show"
+
   def index
     @post = Post.new
     @posts = Post.find_all_by_user_id(session[:user_id])
